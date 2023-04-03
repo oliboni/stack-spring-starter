@@ -1,0 +1,6 @@
+type: app
+description: Template with database confi aand flyway config
+template: stack-spring-starter/new-web-project
+plugins:
+- plugin: stack-spring-starter/db-config
+- plugin: stack-spring-starter/flyway

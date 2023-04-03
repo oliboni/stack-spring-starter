@@ -1,0 +1,30 @@
+name: new-web-project
+description: Template para aplicacoes web
+types:
+  - app-template
+inputs:
+  - label: Spring Boot version
+    type: text
+    name: spring_boot_version
+    default: 3.0.2
+  - label: Group id
+    type: text
+    name: group_id
+  - label: Artifact id
+    type: text
+    name: artifact_id
+  - label: version
+    type: text
+    name: version
+    default: 0.0.1-SNAPSHOT
+  - label: Project name
+    type: text
+    name: name
+    default: project-name
+  - label: Description
+    type: text
+    name: project_description
+
+computedInputs:
+  "base_package": "{{inputs.group_id}}.{{inputs.artifact_id}}"
+  "folder": "{{computed_inputs.base_package | replace('.','/')}}"
