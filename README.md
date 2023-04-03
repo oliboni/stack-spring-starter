@@ -7,6 +7,11 @@
 > Após o download no terminal rodar:
 > ``stk login``
 
+## Importar a stack:
+```
+stk import stack https://github.com/oliboni/stack-sprint-starter.git
+```
+
 ## Stack
 
 ### Criar app com stack default (básica)
