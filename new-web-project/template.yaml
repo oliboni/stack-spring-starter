@@ -20,7 +20,6 @@ inputs:
   - label: Project name
     type: text
     name: name
-    default: project-name
   - label: Description
     type: text
     name: project_description
