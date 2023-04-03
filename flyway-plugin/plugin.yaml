@@ -1,0 +1,44 @@
+name: flyway
+description: initial flyway config
+display-name: flyway
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Schema name
+    type: text
+    name: schema
+    default: my_db
+  - label: Baseline on migrate
+    type: bool
+    name: baseline_on_migrate
+    default: true
+
+hooks:
+  - type: edit
+    trigger: after-render
+    path: pom.xml
+    changes:
+      - search:
+          string: </dependencies>
+          insert-before:
+            snippet: snippets/pom-config.xml
+          when:
+            not-exists-snippet: snippets/pom-config.xml
+  - type: edit
+    trigger: after-render
+    path: src/main/resources/application.properties
+    changes:
+      - insert:
+          line: -1
+          snippet: snippets/application.properties

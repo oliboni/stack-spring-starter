@@ -1,0 +1,69 @@
+name: db-config
+description: Plugin add db config
+display-name: db-config
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Database tipe
+    type: multiselect
+    name: driver
+    items:
+      - MySQL
+      - PostgreSQL
+  - label: Username
+    type: text
+    name: username
+  - label: Password
+    type: text
+    name: password
+  - label: JDBC connection
+    type: text
+    name: jdbc_url
+  
+hooks:
+  - type: edit
+    trigger: after-render
+    path: pom.xml
+    condition:
+      variable: driver
+      operator: ==
+      value: MySQL
+    changes:
+      - search:
+          string: </dependencies>
+          insert-before:
+            snippet: snippets/mysql.xml
+          when:
+            not-exists-snippet: snippets/mysql.xml
+  - type: edit
+    trigger: after-render
+    path: pom.xml
+    condition:
+      variable: driver
+      operator: containsAll
+      value: PostgreSQL
+    changes:
+      - search:
+          string: </dependencies>
+          insert-before:
+            snippet: snippets/postgresql.xml
+          when:
+            not-exists-snippet: snippets/postgresql.xml
+  - type: edit
+    trigger: after-render
+    path: src/main/resources/application.properties
+    changes:
+      - insert:
+          line: -1
+          snippet: snippets/conf-db.properties
