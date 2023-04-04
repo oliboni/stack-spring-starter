@@ -1,4 +1,4 @@
-package {{inputs.config_path}};
+package {{inputs.config_path}}
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
