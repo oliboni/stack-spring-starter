@@ -25,7 +25,7 @@ stk create app test-stackfile2 -S stack-spring-starter/template-plugin-db
 
 ## Plugins
 
-Existem dois plugins, um para adicionar as configs do database e outro para adicionar as configs do flyway
+Existem três plugins, um para adicionar as configs do database, outro para adicionar as configs do flyway e outro para adicionar as configurações do redis
 
 ### Database
 ```
