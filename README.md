@@ -29,12 +29,16 @@ Existem dois plugins, um para adicionar as configs do database e outro para adic
 
 ### Database
 ```
-stk apply plugin -p /Users/<USER>/<PATH>/stack-spring-starter/db-config-plugin
+stk apply plugin stack-spring-starter/db-config-plugin
 ```
 
 ### Flyway
 ```
-stk apply plugin -p /Users/<USER>/<PATH>/stack-spring-starter/flyway-plugin
+stk apply plugin stack-spring-starter/flyway-plugin
+```
+### Redis
+```
+stk apply plugin stack-spring-starter/redis-plugin
 ```
 
 ## Comandos úteis:

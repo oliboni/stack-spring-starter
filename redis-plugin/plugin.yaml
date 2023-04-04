@@ -28,7 +28,7 @@ inputs:
     name: config_path
 
 computedInputs:
-  "path": "src/main/java/{{inputs.config_path | replace('.','/')}}"
+  "path": "src/main/kotlin/{{inputs.config_path | replace('.','/')}}"
 
 hooks:
   - type: edit
